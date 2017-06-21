@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Prerequisite') {
             steps {
-                echo 'Hello Jenkins'
+                echo 'Hello Jenkins1'
             }
         }
     }
