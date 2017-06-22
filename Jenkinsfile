@@ -1,8 +1,10 @@
 pipeline {
-    stage('Checkout Sources') {
-        steps {
-            sh "echo abcd"
+    def abc = 'abcd'
+    stages {
+        stage('Checkout Sources') {
+            steps {
+                sh "echo ${abc}"
+            }
         }
     }
-
 }
