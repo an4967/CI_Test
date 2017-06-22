@@ -1,0 +1,11 @@
+sudo: required
+
+language: c
+
+services:
+  - docker
+
+before_install:
+- docker pull an4967/tizenrt:1.1
+- docker run an4967/tizenrt:1.1
+- docker ps -a
