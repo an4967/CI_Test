@@ -1,5 +1,6 @@
+def abc = 'abcd'
 pipeline {
-    def abc = 'abcd'
+    agent any
     stages {
         stage('Checkout Sources') {
             steps {
