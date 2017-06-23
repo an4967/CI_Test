@@ -1,5 +1,6 @@
 # Tizen RT
 
+[![Build Status](https://travis-ci.org/an4967/CI_Test.svg?branch=master)](https://travis-ci.org/an4967/CI_Test)
 [![License](https://img.shields.io/badge/licence-Apache%202.0-brightgreen.svg?style=flat)](LICENSE)
 
 lightweight RTOS-based platform to support low-end IoT devices.  
