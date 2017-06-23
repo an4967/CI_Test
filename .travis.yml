@@ -7,8 +7,9 @@ services:
 
 before_install:
 - docker pull an4967/tizenrt:1.1
-- ls
 
 script:
-- docker run --rm -it an4967/tizenrt:1.1 /bin/bash
-- exit
+- docker run -it --name tizenrt_docker -v ../CI_Test:/root/tizenrt an4967/tizenrt:1.1 /bin/bash
+- docker exec tizenrt_docker ls "./root/tizenrt"
+- docker exec tizenrt_docker exit
+- echo "Done"
