@@ -7,8 +7,8 @@ services:
 
 before_install:
 - docker pull an4967/tizenrt:1.1
+- ls
 
 script:
-- ll
 - docker run --rm -it an4967/tizenrt:1.1 /bin/bash
-- ll
+- exit
