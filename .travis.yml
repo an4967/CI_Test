@@ -10,7 +10,8 @@ before_install:
 - echo "${TRAVIS_BUILD_DIR}"
 
 script:
-- docker run -it --name tizenrt_docker -v ${TRAVIS_BUILD_DIR}:/root/tizenrt an4967/tizenrt:1.1 /bin/bash
+- docker run -d --name tizenrt_docker -v ${TRAVIS_BUILD_DIR}:/root/tizenrt an4967/tizenrt:1.1
+- docker exec tizenrt_docker ls
 - docker exec tizenrt_docker ls "./root/tizenrt"
 - docker exec tizenrt_docker exit
 - echo "Done"
