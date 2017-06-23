@@ -7,11 +7,10 @@ services:
 
 before_install:
 - docker pull an4967/tizenrt:1.1
-- echo "$(TRAVIS_BUILD_DIR)"
 - echo "${TRAVIS_BUILD_DIR}"
 
 script:
-- docker run -it --name tizenrt_docker -v $(pwd):/root/tizenrt an4967/tizenrt:1.1 /bin/bash
+- docker run -it --name tizenrt_docker -v ${TRAVIS_BUILD_DIR}:/root/tizenrt an4967/tizenrt:1.1 /bin/bash
 - docker exec tizenrt_docker ls "./root/tizenrt"
 - docker exec tizenrt_docker exit
 - echo "Done"
