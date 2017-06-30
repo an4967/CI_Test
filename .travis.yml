@@ -1,11 +1,6 @@
 sudo: true
 dist: trusty
 
-language: c
-
-services:
-- docker
-
 jobs:
 	include:
 		- stage: Prerequisite
@@ -21,4 +16,3 @@ jobs:
 		- script: docker exec tizenrt_docker make distclean
 		- script: docker exec -it tizenrt_docker bash -c "cd tools; ./configure.sh artik053/${CONFIG}"
 		- script: docker exec -it tizenrt_docker bash -c "export PATH=/root/gcc-arm-none-eabi-4_9-2015q3/bin:$PATH;make;"
-		
