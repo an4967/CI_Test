@@ -1,4 +1,3 @@
-dist: trusty
 sudo: required
 
 language: c
@@ -9,13 +8,14 @@ services:
 env:
 - CONFIG=tash
 - CONFIG=nettest
+- CONFIG=minimal
 
 before_install:
 - docker pull an4967/tizenrt:1.1
 - echo "${TRAVIS_BUILD_DIR}"
 
 script:
-- echo "BUILD CONFIG : ${CONFIG}"
+- echo "Build - ${CONFIG}"
 - docker run -d -it --name tizenrt_docker -v ${TRAVIS_BUILD_DIR}:/root/tizenrt -w /root/tizenrt/os an4967/tizenrt:1.1 /bin/bash
 - docker exec tizenrt_docker make distclean
 - docker exec -it tizenrt_docker bash -c "cd tools; ./configure.sh artik053/${CONFIG}"
