@@ -1,18 +1,18 @@
-sudo: true
+sudo: false
 dist: trusty
+group: deprecated-2017Q2
+
+language: c
+
+env:
+- TEST_SUITE=integration_tests
+- TEST_SUITE=unit_tests
+
+script: bundle exec rake test:$TEST_SUITE
 
 jobs:
-	include:
-		- stage: Prerequisite
-			script: docker pull an4967/tizenrt:1.1
-		- script: echo "${TRAVIS_BUILD_DIR}"
-		- stage: Build
-			env:
-				- CONFIG=tash
-				- CONFIG=nettest
-				- CONFIG=minimal
-			script: echo "Build - ${CONFIG}"
-		- script: docker run -d -it --name tizenrt_docker -v ${TRAVIS_BUILD_DIR}:/root/tizenrt -w /root/tizenrt/os an4967/tizenrt:1.1 /bin/bash
-		- script: docker exec tizenrt_docker make distclean
-		- script: docker exec -it tizenrt_docker bash -c "cd tools; ./configure.sh artik053/${CONFIG}"
-		- script: docker exec -it tizenrt_docker bash -c "export PATH=/root/gcc-arm-none-eabi-4_9-2015q3/bin:$PATH;make;"
+  include:
+    - stage: deploy
+      env: TEST_SUITE=none
+      install: skip # bundle install is not required
+      script: ./deploy.sh
